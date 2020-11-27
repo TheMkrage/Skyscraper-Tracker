@@ -10,7 +10,6 @@ class SkyscraperListPage extends StatefulWidget {
 class _SkyscraperListPage extends State<SkyscraperListPage> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Text("List");
   }
 }

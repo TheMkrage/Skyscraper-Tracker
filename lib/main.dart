@@ -1,6 +1,8 @@
 import 'package:SkyscraperTracker/skyscraper_list_page.dart';
 import 'package:flutter/material.dart';
 
+import 'info_page.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -57,42 +59,23 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   final List<Tab> tabs = <Tab>[
-    Tab(text: 'LEFT', child: SkyscraperListPage()),
-    Tab(text: 'RIGHT'),
+    Tab(text: 'Skyscrapers'),
+    Tab(text: 'Info'),
   ];
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: tabs.length,
-      // The Builder widget is used to have a different BuildContext to access
-      // closest DefaultTabController.
-      child: Builder(builder: (BuildContext context) {
-        final TabController tabController = DefaultTabController.of(context);
-        tabController.addListener(() {
-          if (!tabController.indexIsChanging) {
-            // Your code goes here.
-            // To get index of current tab use tabController.index
-          }
-        });
-        return Scaffold(
+        length: tabs.length,
+        // The Builder widget is used to have a different BuildContext to access
+        // closest DefaultTabController.
+        child: Scaffold(
           appBar: AppBar(
             bottom: TabBar(
               tabs: tabs,
             ),
           ),
-          body: TabBarView(
-            children: tabs.map((Tab tab) {
-              return Center(
-                child: Text(
-                  tab.text + ' Tab',
-                  style: Theme.of(context).textTheme.headline5,
-                ),
-              );
-            }).toList(),
-          ),
-        );
-      }),
-    );
+          body: TabBarView(children: [SkyscraperListPage(), InfoPage()]),
+        ));
   }
 }
