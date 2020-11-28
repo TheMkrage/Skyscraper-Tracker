@@ -1,3 +1,4 @@
+import 'package:SkyscraperTracker/model/skyscraper.dart';
 import 'package:SkyscraperTracker/skyscraper_list_page.dart';
 import 'package:flutter/material.dart';
 
@@ -36,16 +37,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -53,11 +44,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
+  List<Skyscraper> _skyscrapers = [Skyscraper(name: "yes")];
   final List<Tab> tabs = <Tab>[
     Tab(text: 'Skyscrapers'),
     Tab(text: 'Info'),
@@ -65,17 +52,22 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print(_skyscrapers);
     return DefaultTabController(
         length: tabs.length,
-        // The Builder widget is used to have a different BuildContext to access
-        // closest DefaultTabController.
         child: Scaffold(
           appBar: AppBar(
+            title: Text("Skyscraper Tracker"),
             bottom: TabBar(
               tabs: tabs,
             ),
           ),
-          body: TabBarView(children: [SkyscraperListPage(), InfoPage()]),
+          body: TabBarView(children: [
+            SkyscraperListPage(
+              skyscrapers: _skyscrapers,
+            ),
+            InfoPage()
+          ]),
         ));
   }
 }
