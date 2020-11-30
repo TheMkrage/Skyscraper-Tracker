@@ -1,6 +1,11 @@
+import 'package:SkyscraperTracker/model/skyscraper.dart';
 import 'package:flutter/material.dart';
 
 class NewSkyscraperPage extends StatelessWidget {
+  NewSkyscraperPage({Key key, @required this.onNewSkyscraperSubmit})
+      : super(key: key);
+  final void Function(Skyscraper) onNewSkyscraperSubmit;
+
   final _formKey = GlobalKey<FormState>();
   final _controller = TextEditingController();
 
@@ -22,10 +27,8 @@ class NewSkyscraperPage extends StatelessWidget {
               ElevatedButton(
                 child: Text('Submit'),
                 onPressed: () {
-                  print(_formKey);
-                  print(_formKey.currentState);
-                  print(_controller.text);
-                  print(_controller.value);
+                  onNewSkyscraperSubmit(Skyscraper(name: _controller.text));
+                  Navigator.pop(context);
                 },
               )
             ],

@@ -2,7 +2,6 @@ import 'package:SkyscraperTracker/row/skyscraper_row.dart';
 import 'package:flutter/material.dart';
 
 import 'model/skyscraper.dart';
-import 'new_skyscraper_page.dart';
 
 class SkyscraperListPage extends StatefulWidget {
   const SkyscraperListPage({Key key, @required this.skyscrapers})
@@ -28,17 +27,6 @@ class _SkyscraperListPage extends State<SkyscraperListPage> {
             skyscraper: this.widget.skyscrapers[index],
           );
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        tooltip: 'Add Skyscraper',
-        onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => NewSkyscraperPage(),
-                  fullscreenDialog: true));
-        },
-        child: const Icon(Icons.add),
       ),
     );
   }

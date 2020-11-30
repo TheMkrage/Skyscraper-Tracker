@@ -3,6 +3,7 @@ import 'package:SkyscraperTracker/skyscraper_list_page.dart';
 import 'package:flutter/material.dart';
 
 import 'info_page.dart';
+import 'new_skyscraper_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -68,6 +69,23 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             InfoPage()
           ]),
+          floatingActionButton: FloatingActionButton(
+            tooltip: 'Add Skyscraper',
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => NewSkyscraperPage(
+                            onNewSkyscraperSubmit: (newSkyscraper) {
+                              this.setState(() {
+                                this._skyscrapers.add(newSkyscraper);
+                              });
+                            },
+                          ),
+                      fullscreenDialog: true));
+            },
+            child: const Icon(Icons.add),
+          ),
         ));
   }
 }
