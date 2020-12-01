@@ -7,6 +7,12 @@ class SkyscraperRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(child: Text(this.skyscraper.name));
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Text(this.skyscraper.name,
+            style: TextStyle(fontFamily: "HelveticaNeue", fontSize: 64.0)),
+      ),
+    );
   }
 }

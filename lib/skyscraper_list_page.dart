@@ -20,7 +20,7 @@ class _SkyscraperListPage extends State<SkyscraperListPage> {
     print(this.widget.skyscrapers);
     return Scaffold(
       body: ListView.builder(
-        padding: const EdgeInsets.all(6),
+        padding: const EdgeInsets.all(20),
         itemCount: this.widget.skyscrapers.length,
         itemBuilder: (BuildContext context, int index) {
           return SkyscraperRow(
